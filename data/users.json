@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "usuario": "ivan.mendez",
+    "nombreCompleto": "Iván Andrés Méndez Ardila",
+    "rol": "Aprendiz SENA",
+    "contrasena": "$2b$10$s.53F4bid8D9yfqu/ZCTeOYL3rGxExJrgIeCSQdVhapuM5fnQwrUq",
+    "creadoEn": "2026-09-25T16:32:18.138Z"
+  },
+  {
+    "id": 2,
+    "usuario": "aprendiz_1790353938712",
+    "nombreCompleto": "Aprendiz Prueba SENA",
+    "rol": "Usuario",
+    "contrasena": "$2b$10$XhrEwckGGngSUnV0tLtJyeAswV6ON.A0UjQZ5aUCXXgdnD7xTXCs6",
+    "creadoEn": "2026-09-25T16:32:18.806Z"
+  }
+]
