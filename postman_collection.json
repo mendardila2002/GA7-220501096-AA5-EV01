@@ -1,0 +1,238 @@
+{
+  "info": {
+    "_postman_id": "78a9c26b-d812-421b-a567-c12e847c2e01",
+    "name": "SENA GA7-220501096-AA5-EV01 - API Autenticacion",
+    "description": "Colección de pruebas para la evidencia GA7-220501096-AA5-EV01: Diseño y desarrollo de servicios web - caso.\nAprendiz: Iván Andrés Méndez Ardila\nPrograma: ADSO - SENA",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Información de la API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api"
+          ]
+        },
+        "description": "Consulta el estado general del servicio web y metadatos del aprendiz Iván Andrés Méndez Ardila."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Registro - Caso Exitoso (201 Created)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"carlos.gomez\",\n  \"contrasena\": \"claveSegura2026\",\n  \"nombreCompleto\": \"Carlos Gómez\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        },
+        "description": "Registra un nuevo usuario en la base de datos con contraseña cifrada mediante bcrypt."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Registro - Caso Duplicado (409 Conflict)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"ivan.mendez\",\n  \"contrasena\": \"otraClave123\",\n  \"nombreCompleto\": \"Iván Méndez Duplicado\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        },
+        "description": "Valida que el servicio web rechace nombres de usuario ya existentes devolviendo código 409."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Login - Autenticación Satisfactoria (200 OK)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"ivan.mendez\",\n  \"contrasena\": \"sena2026\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "description": "Cumple el requerimiento: 'si la autenticación es correcta saldrá un mensaje de autenticación satisfactoria'."
+      },
+      "response": []
+    },
+    {
+      "name": "5. Login - Error Contraseña Incorrecta (401)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"ivan.mendez\",\n  \"contrasena\": \"claveInvalida999\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "description": "Cumple el requerimiento: 'en caso contrario, debe devolver error en la autenticación'."
+      },
+      "response": []
+    },
+    {
+      "name": "6. Login - Error Usuario Inexistente (401)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"usuario_no_registrado_99\",\n  \"contrasena\": \"cualquierClave\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "description": "Cumple el requerimiento de devolver error en la autenticación cuando el usuario no existe."
+      },
+      "response": []
+    },
+    {
+      "name": "7. Login - Error Validación Campos Vacíos (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"\",\n  \"contrasena\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "description": "Verifica el middleware de validación ante datos faltantes."
+      },
+      "response": []
+    },
+    {
+      "name": "8. Listar Usuarios Registrados (200 OK)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/auth/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "users"
+          ]
+        },
+        "description": "Obtiene la lista de usuarios registrados para validar la persistencia en el servicio web."
+      },
+      "response": []
+    }
+  ]
+}

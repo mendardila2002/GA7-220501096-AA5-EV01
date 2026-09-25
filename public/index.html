@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API de Autenticación - SENA GA7-220501096-AA5-EV01</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Encabezado Principal -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-badge">
+        <span class="badge-sena">SENA</span>
+        <span class="badge-code">ADSO • GA7-220501096-AA5-EV01</span>
+      </div>
+      <h1 class="main-title">Servicio Web de Autenticación y Registro</h1>
+      <p class="subtitle">Evidencia: Diseño y desarrollo de servicios web - caso</p>
+      <div class="author-tag">
+        <span class="avatar">👨‍💻</span>
+        <div>
+          <strong>Aprendiz:</strong> Iván Andrés Méndez Ardila
+          <span class="status-online"><span class="dot"></span> API en Línea (Express.js)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal de Pruebas -->
+  <main class="main-container">
+    
+    <!-- Barra de Estado de la API -->
+    <section class="api-status-card">
+      <div class="status-item">
+        <span class="status-label">Servicio:</span>
+        <span class="status-value highlight">REST API Express</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Seguridad:</span>
+        <span class="status-value">Bcrypt Criptográfico (Salt=10)</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Base de Datos:</span>
+        <span class="status-value">Persistencia JSON Local</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Puerto:</span>
+        <span class="status-value highlight" id="serverPort">3000</span>
+      </div>
+    </section>
+
+    <!-- Grid de Formularios de Prueba -->
+    <div class="grid-layout">
+
+      <!-- Formulario 1: Inicio de Sesión (Login) -->
+      <section class="card form-card login-card">
+        <div class="card-header">
+          <div class="icon-circle icon-login">🔐</div>
+          <div>
+            <h2>1. Inicio de Sesión (Login)</h2>
+            <p class="card-desc">Valida usuario y contraseña contra el servicio web</p>
+          </div>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <div class="form-group">
+            <label for="loginUser">Usuario <span class="req">*</span></label>
+            <input type="text" id="loginUser" placeholder="Ej: ivan.mendez" required autocomplete="username">
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Contraseña <span class="req">*</span></label>
+            <input type="password" id="loginPassword" placeholder="Ej: sena2026" required autocomplete="current-password">
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="btn btn-primary" id="btnLogin">
+              <span>Iniciar Sesión</span>
+            </button>
+            <button type="button" class="btn btn-outline" id="btnFillDefault">
+              <span>Cargar Usuario Demo</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Banner de Resultado del Login -->
+        <div id="loginFeedback" class="feedback-banner hidden">
+          <div class="feedback-icon" id="feedbackIcon"></div>
+          <div class="feedback-content">
+            <strong id="feedbackTitle"></strong>
+            <p id="feedbackMessage"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Formulario 2: Registro de Usuario -->
+      <section class="card form-card register-card">
+        <div class="card-header">
+          <div class="icon-circle icon-register">👤</div>
+          <div>
+            <h2>2. Registro de Usuario</h2>
+            <p class="card-desc">Crea un nuevo usuario con contraseña cifrada</p>
+          </div>
+        </div>
+
+        <form id="registerForm" class="auth-form">
+          <div class="form-group">
+            <label for="regFullName">Nombre Completo (Opcional)</label>
+            <input type="text" id="regFullName" placeholder="Ej: Pepito Pérez">
+          </div>
+
+          <div class="form-group">
+            <label for="regUser">Nombre de Usuario <span class="req">*</span></label>
+            <input type="text" id="regUser" placeholder="Ej: pepito.perez" required autocomplete="username">
+          </div>
+
+          <div class="form-group">
+            <label for="regPassword">Contraseña <span class="req">*</span></label>
+            <input type="password" id="regPassword" placeholder="Mínimo 4 caracteres" required autocomplete="new-password">
+          </div>
+
+          <button type="submit" class="btn btn-success" id="btnRegister">
+            <span>Registrar Usuario en la API</span>
+          </button>
+        </form>
+
+        <!-- Banner de Resultado de Registro -->
+        <div id="registerFeedback" class="feedback-banner hidden">
+          <div class="feedback-icon" id="regFeedbackIcon"></div>
+          <div class="feedback-content">
+            <strong id="regFeedbackTitle"></strong>
+            <p id="regFeedbackMessage"></p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Consola de Respuesta HTTP en Vivo -->
+    <section class="card console-card">
+      <div class="card-header flex-between">
+        <div class="flex-align">
+          <div class="icon-circle icon-console">⚡</div>
+          <div>
+            <h2>Consola de Respuestas HTTP en Tiempo Real</h2>
+            <p class="card-desc">Inspección de peticiones y respuestas JSON emitidas por Express</p>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-outline" id="btnClearConsole">Limpiar Consola</button>
+      </div>
+
+      <div class="console-body">
+        <div class="console-status-bar">
+          <span class="badge-method" id="consoleMethod">POST</span>
+          <span class="console-endpoint" id="consoleUrl">/api/auth/login</span>
+          <span class="badge-status status-init" id="consoleStatus">Status: Listo</span>
+        </div>
+        <pre class="json-viewer"><code id="consoleJson">// Aquí se mostrará la respuesta JSON del servicio web al realizar pruebas</code></pre>
+      </div>
+    </section>
+
+    <!-- Lista de Usuarios Registrados -->
+    <section class="card users-card">
+      <div class="card-header flex-between">
+        <div class="flex-align">
+          <div class="icon-circle icon-users">📋</div>
+          <div>
+            <h2>Usuarios Registrados en el Sistema</h2>
+            <p class="card-desc">Persistencia activa consultada desde <code>GET /api/auth/users</code></p>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-primary" id="btnRefreshUsers">🔄 Actualizar Lista</button>
+      </div>
+
+      <div class="table-container">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Usuario</th>
+              <th>Nombre Completo</th>
+              <th>Rol</th>
+              <th>Fecha de Creación</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody">
+            <tr>
+              <td colspan="5" class="loading-cell">Cargando usuarios...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Documentación Rápida de Endpoints para el Instructor -->
+    <section class="card docs-card">
+      <div class="card-header">
+        <div class="icon-circle icon-docs">📖</div>
+        <div>
+          <h2>Documentación de Endpoints (Especificación Técnica)</h2>
+          <p class="card-desc">Contratos de entrada, salida y códigos de estado HTTP implementados</p>
+        </div>
+      </div>
+
+      <div class="docs-grid">
+        <!-- Endpoint 1 -->
+        <div class="doc-item">
+          <div class="doc-header">
+            <span class="badge-method method-post">POST</span>
+            <code class="doc-route">/api/auth/login</code>
+          </div>
+          <p class="doc-desc">Valida credenciales de acceso. Cumple el requerimiento principal de la evidencia:</p>
+          <ul>
+            <li><strong>200 OK:</strong> <code>{ "exito": true, "mensaje": "Autenticación satisfactoria" }</code></li>
+            <li><strong>401 Unauthorized:</strong> <code>{ "exito": false, "mensaje": "Error en la autenticación: Credenciales inválidas..." }</code></li>
+            <li><strong>400 Bad Request:</strong> Campos faltantes o vacíos.</li>
+          </ul>
+        </div>
+
+        <!-- Endpoint 2 -->
+        <div class="doc-item">
+          <div class="doc-header">
+            <span class="badge-method method-post">POST</span>
+            <code class="doc-route">/api/auth/register</code>
+          </div>
+          <p class="doc-desc">Registra un nuevo usuario con contraseña cifrada (bcrypt):</p>
+          <ul>
+            <li><strong>201 Created:</strong> <code>{ "exito": true, "mensaje": "Registro satisfactorio..." }</code></li>
+            <li><strong>409 Conflict:</strong> Usuario ya existente.</li>
+            <li><strong>400 Bad Request:</strong> Validación de longitud y obligatoriedad.</li>
+          </ul>
+        </div>
+
+        <!-- Endpoint 3 -->
+        <div class="doc-item">
+          <div class="doc-header">
+            <span class="badge-method method-get">GET</span>
+            <code class="doc-route">/api/auth/users</code>
+          </div>
+          <p class="doc-desc">Retorna la lista de usuarios registrados sin exponer datos confidenciales.</p>
+          <ul>
+            <li><strong>200 OK:</strong> Array con usuarios, id, nombre y roles.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer con Créditos SENA -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>Servicio Nacional de Aprendizaje - <strong>SENA</strong> | Tecnólogo en Análisis y Desarrollo de Software (ADSO)</p>
+      <p>Evidencia: <strong>GA7-220501096-AA5-EV01</strong> - Diseño y desarrollo de servicios web - caso</p>
+      <p>Desarrollado por el aprendiz: <strong>Iván Andrés Méndez Ardila</strong></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
