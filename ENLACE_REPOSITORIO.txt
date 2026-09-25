@@ -1,0 +1,28 @@
+================================================================================
+SERVICIO NACIONAL DE APRENDIZAJE - SENA
+TECNÓLOGO EN ANÁLISIS Y DESARROLLO DE SOFTWARE (ADSO)
+================================================================================
+
+EVIDENCIA: GA7-220501096-AA5-EV01: Diseño y desarrollo de servicios web - caso
+APRENDIZ:  Iván Andrés Méndez Ardila
+FECHA:     2026
+
+--------------------------------------------------------------------------------
+ENLACE DEL REPOSITORIO DE CONTROL DE VERSIONES (GIT / GITHUB)
+--------------------------------------------------------------------------------
+
+Repositorio GitHub:
+https://github.com/IvanMendezArdila/sena-ga7-aa5-ev01-servicio-web-autenticacion
+
+(Nota: Si subes este repositorio a tu cuenta personal de GitHub, GitLab o Bitbucket,
+puedes actualizar la URL anterior con tu enlace correspondiente).
+
+--------------------------------------------------------------------------------
+INFORMACIÓN TÉCNICA DEL SERVICIO WEB
+--------------------------------------------------------------------------------
+- Entorno de Ejecución: Node.js (v24+)
+- Framework Web:        Express.js (v4.21+)
+- Seguridad:            Cifrado de contraseñas con bcryptjs (Salt = 10)
+- Persistencia:         Almacenamiento JSON estructurado en local
+- Documentación y Test: Pruebas unitarias integradas, Interfaz Web y Postman Collection
+================================================================================
