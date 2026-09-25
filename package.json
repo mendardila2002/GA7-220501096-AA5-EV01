@@ -1,0 +1,27 @@
+{
+  "name": "api-autenticacion-sena",
+  "version": "1.0.0",
+  "description": "Evidencia GA7-220501096-AA5-EV01 - Diseño y desarrollo de servicios web para registro e inicio de sesión",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node test/auth.test.js"
+  },
+  "keywords": [
+    "sena",
+    "adso",
+    "api",
+    "express",
+    "autenticacion",
+    "registro",
+    "login"
+  ],
+  "author": "Ivan Andres Mendez Ardila",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

@@ -1,0 +1,19 @@
+# Dependencias
+node_modules/
+package-lock.json
+
+# Entorno y logs
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Archivos comprimidos de entrega
+*.zip
+*.rar
