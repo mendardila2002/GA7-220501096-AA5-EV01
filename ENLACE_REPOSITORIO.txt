@@ -12,10 +12,8 @@ ENLACE DEL REPOSITORIO DE CONTROL DE VERSIONES (GIT / GITHUB)
 --------------------------------------------------------------------------------
 
 Repositorio GitHub:
-https://github.com/IvanMendezArdila/sena-ga7-aa5-ev01-servicio-web-autenticacion
+https://github.com/mendardila2002/GA7-220501096-AA5-EV01
 
-(Nota: Si subes este repositorio a tu cuenta personal de GitHub, GitLab o Bitbucket,
-puedes actualizar la URL anterior con tu enlace correspondiente).
 
 --------------------------------------------------------------------------------
 INFORMACIÓN TÉCNICA DEL SERVICIO WEB

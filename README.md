@@ -81,7 +81,7 @@ GA7-220501096-AA5-EV01/
 
 ### 1. Clonar o Descomprimir el Proyecto
 ```bash
-git clone https://github.com/IvanMendezArdila/sena-ga7-aa5-ev01-servicio-web-autenticacion.git
+git clone https://github.com/mendardila2002/GA7-220501096-AA5-EV01
 cd GA7-220501096-AA5-EV01
 ```
 
